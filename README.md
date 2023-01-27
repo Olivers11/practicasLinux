@@ -21,18 +21,18 @@ This section should guide you to configurate dmz in your server
 
 ### Instructions
 
-- *netplan*
+- *netplan* [Code](https://github.com/Olivers11/practicasLinux/blob/so2/01-network-manager-all.yaml)
   ```bash
      sudo vim /etc/netplan/01-network-manager-all.yaml
      #Paste code
   ```
   
-- *dhcpd.conf*
+- *dhcpd.conf*  [Code](https://github.com/Olivers11/practicasLinux/blob/so2/dhcpd.conf)
   ```bash
      sudo vim /etc/dhcp/dhcpd.conf
      #Paste code
   ```
-- *isc-dhcp-server*
+- *isc-dhcp-server* [Code](https://github.com/Olivers11/practicasLinux/blob/so2/isc-dhcp-server)
   ```bash
      sudo vim /etc/default/isc-dhcp-server
      #Paste code
