@@ -6,7 +6,7 @@ This section should guide you to configurate dmz in your server
 
 
 ### Dependencies
-  **You need a virtual machine with 3 ethernet adapters (1 Bridge adapter and 2 Internal Network) 
+  **You need a virtual machine with 3 ethernet adapters (1 Bridge adapter and 2 Internal Network)**
 - [net-tools](https://packages.ubuntu.com/net-tools) is required show ethernet cards
 
   `sudo apt install net-tools`
