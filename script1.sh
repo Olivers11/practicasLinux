@@ -1,4 +1,4 @@
-PTABLES=/sbin/iptables
+IPTABLES=/sbin/iptables
 EXTIF="enp0s3"
 INTIF="enp0s8"
 DMZIF="enp0s9"
