@@ -2,8 +2,8 @@ IPTABLES=/sbin/iptables
 EXTIF="enp0s3"
 INTIF="enp0s8"
 DMZIF="enp0s9"
-INTERNA="10.10.10.200"
-DMZ="20.10.10.201"
+INTERNA="110.10.70.200"
+DMZ="210.20.70.200"
 $IPTABLES -P INPUT ACCEPT
 $IPTABLES -F INPUT
 $IPTABLES -P OUTPUT ACCEPT
@@ -27,12 +27,12 @@ $IPTABLES -A FORWARD -i $EXTIF -p tcp --dport 10001 -j ACCEPT
 $IPTABLES -A PREROUTING -t nat -p tcp --dport 10001 -j DNAT --to $INTERNA:10000 && echo "Regla 1 OK"
 $IPTABLES -A FORWARD -i $EXTIF -p tcp --dport 10002 -j ACCEPT
 $IPTABLES -A PREROUTING -t nat -p tcp --dport 10002 -j DNAT --to $DMZ:10000 && echo "Regla 2 OK"
-$IPTABLES -t nat -A POSTROUTING -s 10.10.10.0/24 -o $EXTIF -j MASQUERADE && echo "Regla 3 OK"
-$IPTABLES -t nat -A POSTROUTING -s 20.10.10.0/24 -o $EXTIF -j MASQUERADE && echo "regla 4 ok"
-$IPTABLES -A FORWARD -s 10.10.10.0/24 -d 20.10.10.0/24 -p ICMP -j DROP
+$IPTABLES -t nat -A POSTROUTING -s 110.10.70.0/24 -o $EXTIF -j MASQUERADE && echo "Regla 3 OK"
+$IPTABLES -t nat -A POSTROUTING -s 210.20.70.0/24 -o $EXTIF -j MASQUERADE && echo "regla 4 ok"
+$IPTABLES -A FORWARD -s 110.10.70.0/24 -d 210.20.70.0/24 -p ICMP -j DROP
 echo "Servicio webmin desde exterior"
 $IPTABLES -A FORWARD -i $EXTIF -p tcp --dport 3306 -j ACCEPT
-$IPTABLES -A PREROUTING -t nat -p tcp --dport 3306 -j DNAT --to 10.10.10.200:3306
+$IPTABLES -A PREROUTING -t nat -p tcp --dport 3306 -j DNAT --to $INTERNA:3306
 $IPTABLES -A FORWARD -i $EXTIF -p tcp --dport 3307 -j ACCEPT
 $IPTABLES -A PREROUTING -t nat -p tcp --dport 3307 -j DNAT --to $DMZ:3306
 echo "Servicio mysql transparente funcionando"
